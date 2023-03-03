@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Demo extends React.Component {
+
+            state = { isHot: true }
+
+            clickHandler = () => {
+                const { inp1 } = this
+                alert(inp1.value)
+            }
+
+            changeWeather = () => {
+                this.setState({
+                    isHot: !this.state.isHot
+                })
+            }
+
+            // 内联式和外部声明的区别是：
+            // 内联式第一次会正常执行 之后每次更新都会执行两次，第一次传入参数为null，第二次为DOM
+            // 外部声明ref函数只会执行一次(大多数情况还是用内联写法)
+            saveInput = (c) => {
+                this.inp1 = c
+                console.log('#', c);
+            }
+            // ref 回调函数是以内联函数的方式定义的，在更新过程中它会被执行两次，第一次传入参数 null，然后第二次会传入参数 DOM 元素。
+            // 通过将 ref 的回调函数定义成 class 的绑定函数的方式可以避免上述问题，但是大多数情况下它是无关紧要的。
+            render() {
+                return (
+                    <div>
+                        <h2>今天天气很{this.state.isHot == true ? '炎热' : '凉爽'}</h2>
+                        {/*<input ref={c => { this.inp1 = c; console.log('#', c); }} type="text" placeholder="点击展示数据" />*/}
+                        <input ref={this.saveInput} type="text" placeholder="点击展示数据" />
+                        <button onClick={this.clickHandler}>点击展示左侧数据</button>
+                        <button onClick={this.changeWeather}>点击更改天气</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.querySelector('#root'))
+    </script>
+</body>
+
+</html>

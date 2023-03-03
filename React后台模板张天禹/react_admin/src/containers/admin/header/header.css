@@ -1,0 +1,32 @@
+.header {
+  background-color: #fff;
+}
+.header-user {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid red;
+  padding-right: 30px;
+}
+.header-weather {
+  position: relative;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+.header-weather .title {
+  font-size: 18px
+}
+.header-weather .title::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid #fff;
+}

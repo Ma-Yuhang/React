@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <!-- 引入react中对props限制的js   多了PropTypes -->
+    <script src="../js/prop-types.js"></script>
+
+
+    <script type="text/babel">
+
+        function Person(props) {
+            const { name, sex, age } = props
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>性别：{sex}</li>
+                    <li>年龄：{age + 1}</li>
+                </ul>
+            )
+        }
+        // 进行类型和必要性的限制
+        Person.propTypes = {
+            name: PropTypes.string.isRequired, // 限制name为string类型，且必须传
+            sex: PropTypes.string, // 限制sex为string类型
+            age: PropTypes.number, // 限制为number类型
+            speak: PropTypes.func // 限制为函数类型
+        }
+
+        // 默认值的限制
+        Person.defaultProps = {
+            sex: '未知',
+            age: 18
+        }
+
+        // 渲染组件到页面
+        ReactDOM.render(<Person name="Bob" sex="男" speak={speak} />, document.querySelector('#root1'))
+        ReactDOM.render(<Person name="Alice" age={21} />, document.querySelector('#root2'))
+
+        const p = { name: "小明", sex: "男", age: 18 }
+        ReactDOM.render(<Person {...p} />, document.querySelector('#root3'))
+
+        function speak() {
+            console.log('说话');
+        }
+    </script>
+</body>
+
+</html>

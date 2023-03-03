@@ -1,0 +1,27 @@
+.cart-detail {
+  background-color: #fff;
+  position: absolute;
+  bottom: 80rem;
+  width: 100%;
+
+  max-height: 1200rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+.detail-header {
+  padding: 30rem;
+  display: flex;
+  justify-content: space-between;
+}
+.detail-mealsList {
+  overflow: auto;
+}
+.detail-title {
+  font-size: 28rem;
+  font-weight: 700;
+}
+.clear {
+  font-size: 24rem;
+  color: #aaa;
+}

@@ -1,0 +1,24 @@
+$bgc: #eee;
+
+body {
+  background-color: $bgc;
+  // 禁止文字选中
+  user-select: none;
+}
+img {
+  // 禁止拖动图片
+  -webkit-user-drag: none;
+}
+// 首页的布局
+.logo {
+  height: 32px;
+  line-height: 32px;
+  font-size: 20px;
+  text-align: center;
+  margin: 16px;
+  color: #fff;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}

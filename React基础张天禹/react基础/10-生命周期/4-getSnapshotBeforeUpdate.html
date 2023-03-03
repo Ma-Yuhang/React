@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .list {
+         height: 200px;
+         width: 150px;
+         overflow: auto;
+         background-color: aqua;
+      }
+
+      .newsItem {
+         height: 30px;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="root"></div>
+   <script src="../js/17.0.1/react.development.js"></script>
+   <script src="../js/17.0.1/react-dom.development.js"></script>
+   <script src="../js/17.0.1/babel.min.js"></script>
+
+
+   <script type="text/babel">
+
+      class News extends React.Component {
+
+         state = { newsArr: [] }
+
+         componentDidMount() {
+
+            setInterval(() => {
+               // 获取原状态
+               const { newsArr } = this.state
+               // 模拟一条新闻
+               const news = `新闻${newsArr.length + 1}`
+               // 修改state中的newArr
+               this.setState({ newsArr: [news, ...newsArr] })
+            }, 1000);
+         }
+
+         getSnapshotBeforeUpdate() {
+            return this.refs.list.scrollHeight
+         }
+
+         componentDidUpdate(prevProps, prevState, height) {
+            this.refs.list.scrollTop += this.refs.list.scrollHeight - height
+         }
+         render() {
+            return (
+               <div className="list" ref="list">
+                  {
+                     this.state.newsArr.map((item, i) => {
+                        return <div key={i} className='newsItem'>{item}</div>
+                     })
+                  }
+               </div>
+            )
+         }
+      }
+
+      ReactDOM.render(<News />, document.querySelector('#root'))
+   </script>
+</body>
+
+</html>

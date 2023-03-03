@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        class Demo extends React.Component {
+            clickHandler = () => {
+                const { inp1 } = this
+                alert(inp1.value)
+            }
+            blurHandler = () => {
+                const { inp2 } = this
+                alert(inp2.value)
+            }
+            render() {
+                return (
+                    <div>
+                        <input ref={c => this.inp1 = c} type="text" placeholder="点击展示数据" />
+                        <button onClick={this.clickHandler}>点击展示左侧数据</button>
+                        <input onBlur={this.blurHandler} ref={c => this.inp2 = c} type="text" placeholder="失焦展示数据" />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.querySelector('#root'))
+    </script>
+</body>
+
+</html>

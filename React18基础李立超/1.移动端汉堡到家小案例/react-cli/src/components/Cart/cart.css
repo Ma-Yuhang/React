@@ -1,0 +1,66 @@
+.cart-footer-box {
+  position: fixed;
+  bottom: 0;
+  height: 80rem;
+  width: 100%;
+  background-color: #fff;
+  z-index: 99;
+}
+.cart-footer {
+  margin: auto;
+  height: 100%;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  border-radius: 40rem;
+}
+.totalPrice {
+  position: absolute;
+  left: 100rem;
+  font-size: 32rem;
+  color: #fff;
+}
+.totalPrice::before {
+  content: '￥';
+  font-size: 24rem;
+}
+.img-box {
+  position: relative;
+  height: 100%;
+}
+.icon {
+  height: 30rem;
+  line-height: 30rem;
+  text-align: center;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 40rem;
+  top: -10rem;
+  color: #fff;
+  font-size: 20rem;
+  padding: 0 10rem;
+}
+.text {
+  position: absolute;
+  left: 100rem;
+  font-size: 32rem;
+  color: #A3A19D;
+}
+.img {
+  height: 100%;
+}
+.cart-btn {
+  height: 100%;
+  border: 0;
+  border-radius: 40rem;
+  padding: 0 40rem;
+  font-size: 32rem;
+  background-color: #fcbf49;
+}
+.noMealBtn{
+  background-color: #6B6B6B;
+  color: #A3A19D;
+}
